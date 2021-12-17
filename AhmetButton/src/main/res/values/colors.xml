@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="default_text_color">@android:color/white</color>
+    <color name="default_background_color">@android:color/holo_orange_light</color>
+    <color name="default_pressed_color">@android:color/holo_orange_dark</color>
+    <color name="default_border_color">@android:color/holo_orange_light</color>
+
+    <color name="transparent">@android:color/transparent</color>
+</resources>

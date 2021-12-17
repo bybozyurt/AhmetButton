@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AhmetButton">
+
+        <!-- android -->
+        <attr name="android:enabled" />
+        <attr name="android:text" />
+        <attr name="android:textSize" />
+        <attr name="android:textAllCaps" />
+        <attr name="android:textStyle" />
+        <attr name="android:elevation" />
+
+        <!-- normal -->
+        <attr name="ab_textColorNormal" format="color"/>
+        <attr name="ab_backgroundColorNormal" format="color"/>
+        <attr name="ab_borderRadiusNormal" format="dimension"/>
+
+        <!-- pressed -->
+        <attr name="ab_textColorPressed" format="color"/>
+        <attr name="ab_backgroundColorPressed" format="color"/>
+        <attr name="ab_borderRadiusPressed" format="dimension"/>
+
+
+        <!-- general -->
+        <attr name="ab_enabled" format="boolean"/>
+        <attr name="ab_useRippleEffect" format="boolean"/>
+        <attr name="ab_rippleColor" format="color"/>
+        <attr name="ab_rippleOpacity" format="float"/>
+        <attr name="ab_elevation" format="dimension"/>
+
+    </declare-styleable>
+
+</resources>
