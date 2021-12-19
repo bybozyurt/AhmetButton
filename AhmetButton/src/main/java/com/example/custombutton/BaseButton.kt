@@ -13,6 +13,8 @@ import java.io.Console
  */
 abstract class BaseButton : AppCompatButton{
 
+
+
     protected var mContext: Context
     protected var mAttrs: AttributeSet?
     protected var mDefStyleAttr: Int? = 0
@@ -48,6 +50,7 @@ abstract class BaseButton : AppCompatButton{
 //
 //
 //        }
+
         this.background = drawable
 
     }

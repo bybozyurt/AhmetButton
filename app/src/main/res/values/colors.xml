@@ -17,4 +17,5 @@
     <color name="holo_red_light">@android:color/holo_red_light</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="white">@android:color/white</color>
+
 </resources>

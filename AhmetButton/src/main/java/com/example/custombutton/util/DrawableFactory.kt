@@ -4,8 +4,6 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.RippleDrawable
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.custombutton.attribute.DrawableAttributes
 import com.example.custombutton.attribute.RippleAttributes
 
@@ -17,13 +15,14 @@ object DrawableFactory {
 
         val drawable = GradientDrawable()
 
-        val cornerRadius = drawableAttributes.borderRadius.toFloat()
+        val cornerRadius = drawableAttributes.ab_radius.toFloat()
 
         drawable.cornerRadii = floatArrayOf(cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius)
 
 //        drawable.setStroke(drawableAttributes.borderThickness, drawableAttributes.borderColor)
 //        drawable.setColor(ColorUtil.useOpacity(drawableAttributes.backgroundColor, drawableAttributes.backgroundOpacity))
-        drawable.setColor(drawableAttributes.backgroundColor)
+        drawable.setColor(drawableAttributes.ab_bg_color)
+
 
         return drawable
 
@@ -45,4 +44,8 @@ object DrawableFactory {
         return RippleDrawable(ColorUtil.getRippleColorFromColor(rippleAttributes.rippleColor, rippleAttributes.rippleOpacity), drawableNormal, mask)
 
     }
+
+
+
+
 }

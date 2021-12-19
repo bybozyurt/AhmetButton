@@ -14,7 +14,7 @@
         <!-- normal -->
         <attr name="ab_textColorNormal" format="color"/>
         <attr name="ab_backgroundColorNormal" format="color"/>
-        <attr name="ab_borderRadiusNormal" format="dimension"/>
+        <attr name="ab_radius" format="dimension"/>
 
         <!-- pressed -->
         <attr name="ab_textColorPressed" format="color"/>
@@ -28,6 +28,10 @@
         <attr name="ab_rippleColor" format="color"/>
         <attr name="ab_rippleOpacity" format="float"/>
         <attr name="ab_elevation" format="dimension"/>
+
+        <attr name="ab_shadowColor" format="color" />
+        <attr name="ab_shadowHeight" format="dimension" />
+        <attr name="ab_shadowEnabled" format="boolean" />
 
     </declare-styleable>
 
