@@ -5,7 +5,9 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
+import android.os.Build
 import android.util.AttributeSet
+import androidx.annotation.RequiresApi
 import com.example.custombutton.attribute.DrawableAttributes
 import com.example.custombutton.attribute.RippleAttributes
 import com.example.custombutton.attribute.ShadowAttributes
@@ -137,6 +139,7 @@ class AhmetButton : BaseButton {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setupButton() {
 
         setButtonTextColor()
@@ -160,18 +163,18 @@ class AhmetButton : BaseButton {
         }
 
         if (mShadowAttributes.ab_shadow_enabled){
-            pressedDrawable = createDrawable(
-                mDrawableNormal.ab_radius, Color.TRANSPARENT, mDrawableNormal.ab_bg_color)
-            unPressedDrawable = createDrawable(
-                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, mShadowAttributes.ab_shadow_color)
+            pressedDrawable = DrawableFactory.createDrawable(
+                mDrawableNormal.ab_radius, Color.TRANSPARENT, mDrawableNormal.ab_bg_color, mShadowAttributes)
+            unPressedDrawable = DrawableFactory.createDrawable(
+                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, mShadowAttributes.ab_shadow_color, mShadowAttributes)
 
         }
         else{
             mShadowAttributes.ab_shadow_height = 0
-            pressedDrawable = createDrawable(
-                mDrawableNormal.ab_radius, mShadowAttributes.ab_shadow_color, Color.TRANSPARENT)
-            unPressedDrawable = createDrawable(
-                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, Color.TRANSPARENT)
+            pressedDrawable = DrawableFactory.createDrawable(
+                mDrawableNormal.ab_radius, mShadowAttributes.ab_shadow_color, Color.TRANSPARENT, mShadowAttributes)
+            unPressedDrawable = DrawableFactory.createDrawable(
+                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, Color.TRANSPARENT, mShadowAttributes)
 
         }
 
@@ -179,46 +182,46 @@ class AhmetButton : BaseButton {
 
     }
 
-    private fun createDrawable(rad: Int, topColor: Int, bottomColor: Int) : LayerDrawable{
-
-        val radius = rad.toFloat()
-
-//        drawable.cornerRadii =
-//            floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
-
-        val outerRadius = floatArrayOf(
-            radius,
-            radius,
-            radius, radius, radius, radius, radius, radius
-        )
-
-        //Top
-        val topRoundRect = RoundRectShape(outerRadius, null, null)
-        val topShapeDrawable = ShapeDrawable(topRoundRect)
-        topShapeDrawable.paint.color = topColor
-        //Bottom
-        val roundRectShape = RoundRectShape(outerRadius, null, null)
-        val bottomShapeDrawable = ShapeDrawable(roundRectShape)
-        bottomShapeDrawable.paint.color = bottomColor
-
-        //Create array
-        val drawArray = arrayOf<Drawable>(bottomShapeDrawable, topShapeDrawable)
-        val layerDrawable = LayerDrawable(drawArray)
-
-        if(mShadowAttributes.ab_shadow_enabled && topColor != Color.TRANSPARENT){
-            //unpressed drawable
-            layerDrawable.setLayerInset(0,0,0,0,0) /*index, left, top, right, bottom*/
-        }
-        else{
-            //pressed drawable
-            layerDrawable.setLayerInset(0,0,mShadowAttributes.ab_shadow_height,0,0)
-        }
-        layerDrawable.setLayerInset(1,0,0,0,mShadowAttributes.ab_shadow_height)
-
-        return layerDrawable
-
-
-    }
+//    private fun createDrawable(rad: Int, topColor: Int, bottomColor: Int) : LayerDrawable{
+//
+//        val radius = rad.toFloat()
+//
+////        drawable.cornerRadii =
+////            floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
+//
+//        val outerRadius = floatArrayOf(
+//            radius,
+//            radius,
+//            radius, radius, radius, radius, radius, radius
+//        )
+//
+//        //Top
+//        val topRoundRect = RoundRectShape(outerRadius, null, null)
+//        val topShapeDrawable = ShapeDrawable(topRoundRect)
+//        topShapeDrawable.paint.color = topColor
+//        //Bottom
+//        val roundRectShape = RoundRectShape(outerRadius, null, null)
+//        val bottomShapeDrawable = ShapeDrawable(roundRectShape)
+//        bottomShapeDrawable.paint.color = bottomColor
+//
+//        //Create array
+//        val drawArray = arrayOf<Drawable>(bottomShapeDrawable, topShapeDrawable)
+//        val layerDrawable = LayerDrawable(drawArray)
+//
+//        if(mShadowAttributes.ab_shadow_enabled && topColor != Color.TRANSPARENT){
+//            //unpressed drawable
+//            layerDrawable.setLayerInset(0,0,0,0,0) /*index, left, top, right, bottom*/
+//        }
+//        else{
+//            //pressed drawable
+//            layerDrawable.setLayerInset(0,0,mShadowAttributes.ab_shadow_height,0,0)
+//        }
+//        layerDrawable.setLayerInset(1,0,0,0,mShadowAttributes.ab_shadow_height)
+//
+//        return layerDrawable
+//
+//
+//    }
 
     private fun setButtonTextColor() {
 

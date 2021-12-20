@@ -1,11 +1,13 @@
 package com.example.custombutton.util
 
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.RippleDrawable
+import android.graphics.drawable.*
+import android.graphics.drawable.shapes.RoundRectShape
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.custombutton.attribute.DrawableAttributes
 import com.example.custombutton.attribute.RippleAttributes
+import com.example.custombutton.attribute.ShadowAttributes
 
 /**
  * Created by Ahmet Bozyurt on 7.12.2021
@@ -42,6 +44,43 @@ object DrawableFactory {
         }
 
         return RippleDrawable(ColorUtil.getRippleColorFromColor(rippleAttributes.rippleColor, rippleAttributes.rippleOpacity), drawableNormal, mask)
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun createDrawable(rad: Int, topColor: Int, bottomColor: Int, mShadowAttributes: ShadowAttributes) : LayerDrawable {
+
+        val drawable = GradientDrawable()
+        val radius = rad.toFloat()
+
+        drawable.cornerRadii =
+            floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
+
+
+        //Top
+        val topRoundRect = RoundRectShape(drawable.cornerRadii, null, null)
+        val topShapeDrawable = ShapeDrawable(topRoundRect)
+        topShapeDrawable.paint.color = topColor
+        //Bottom
+        val roundRectShape = RoundRectShape(drawable.cornerRadii, null, null)
+        val bottomShapeDrawable = ShapeDrawable(roundRectShape)
+        bottomShapeDrawable.paint.color = bottomColor
+
+        //Create array
+        val drawArray = arrayOf<Drawable>(bottomShapeDrawable, topShapeDrawable)
+        val layerDrawable = LayerDrawable(drawArray)
+
+        if(mShadowAttributes.ab_shadow_enabled && topColor != Color.TRANSPARENT){
+            //unpressed drawable
+            layerDrawable.setLayerInset(0,0,0,0,0) /*index, left, top, right, bottom*/
+        }
+        else{
+            //pressed drawable
+            layerDrawable.setLayerInset(0,0,mShadowAttributes.ab_shadow_height,0,0)
+        }
+        layerDrawable.setLayerInset(1,0,0,0,mShadowAttributes.ab_shadow_height)
+
+        return layerDrawable
 
     }
 
