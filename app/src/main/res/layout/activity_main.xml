@@ -26,8 +26,17 @@
         android:enabled="true"
         app:ab_shadowEnabled="true"
         app:ab_shadowColor="@color/black"
-        app:ab_shadowHeight="10dp"
+        app:ab_shadowHeight="5dp"
         />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="deneme"
+        android:layout_marginTop="10dp"/>
+
 
 <!--    <Space-->
 <!--        android:layout_width="16dp"-->

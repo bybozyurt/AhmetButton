@@ -32,6 +32,7 @@
         <attr name="ab_shadowColor" format="color" />
         <attr name="ab_shadowHeight" format="dimension" />
         <attr name="ab_shadowEnabled" format="boolean" />
+        <attr name="ab_shadowColorDefined" format="boolean"/>
 
     </declare-styleable>
 
