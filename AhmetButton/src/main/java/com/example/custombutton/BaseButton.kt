@@ -2,9 +2,11 @@ package com.example.custombutton
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import androidx.appcompat.widget.AppCompatButton
 import java.io.Console
 
@@ -23,12 +25,15 @@ abstract class BaseButton : AppCompatButton{
         mContext = context
         mAttrs = null
         this.initButton()
+
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         mContext = context
         mAttrs = attrs
         this.initButton()
+
+
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -36,11 +41,13 @@ abstract class BaseButton : AppCompatButton{
         mAttrs = attrs
         mDefStyleAttr = defStyleAttr
         this.initButton()
+
+
     }
 
     protected abstract fun initButton()
 
-    protected fun setButtonBackground(drawable: Drawable) {
+    protected fun setButtonBackground(drawable: Drawable ) {
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 //            this.background = drawable
@@ -50,6 +57,8 @@ abstract class BaseButton : AppCompatButton{
 //
 //
 //        }
+
+
 
         this.background = drawable
 

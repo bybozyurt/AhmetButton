@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.custombutton.attribute.DrawableAttributes
 import com.example.custombutton.attribute.RippleAttributes
@@ -31,7 +32,8 @@ object DrawableFactory {
     }
 
 
-    fun getRippleDrawable(drawableAttributes: DrawableAttributes, rippleAttributes: RippleAttributes): Drawable {
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun getRippleDrawable(drawableAttributes: DrawableAttributes, rippleAttributes: RippleAttributes, layerDrawable: LayerDrawable): Drawable {
 
         val drawableNormal = getBackgroundDrawable(drawableAttributes)
         var mask = GradientDrawable()
@@ -43,15 +45,18 @@ object DrawableFactory {
             mask.setColor(Color.WHITE)
         }
 
-        return RippleDrawable(ColorUtil.getRippleColorFromColor(rippleAttributes.rippleColor, rippleAttributes.rippleOpacity), drawableNormal, mask)
+        return RippleDrawable(ColorUtil.getRippleColorFromColor(rippleAttributes.rippleColor, rippleAttributes.rippleOpacity), layerDrawable, mask)
+
 
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun createDrawable(rad: Int, topColor: Int, bottomColor: Int, mShadowAttributes: ShadowAttributes) : LayerDrawable {
+    fun createDrawable(rad: Int, topColor: Int, bottomColor: Int, mShadowAttributes: ShadowAttributes, drawableAttributes: DrawableAttributes, rippleAttributes: RippleAttributes) : LayerDrawable {
 
         val drawable = GradientDrawable()
         val radius = rad.toFloat()
+
+        //val backgroundDrawable = getRippleDrawable(drawableAttributes, rippleAttributes)
 
         drawable.cornerRadii =
             floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
@@ -70,12 +75,16 @@ object DrawableFactory {
         val drawArray = arrayOf<Drawable>(bottomShapeDrawable, topShapeDrawable)
         val layerDrawable = LayerDrawable(drawArray)
 
+
+
         if(mShadowAttributes.ab_shadow_enabled && topColor != Color.TRANSPARENT){
             //unpressed drawable
+            Log.d("TAG","buradayım1")
             layerDrawable.setLayerInset(0,0,0,0,0) /*index, left, top, right, bottom*/
         }
         else{
             //pressed drawable
+                Log.d("TAG","buradayım")
             layerDrawable.setLayerInset(0,0,mShadowAttributes.ab_shadow_height,0,0)
         }
         layerDrawable.setLayerInset(1,0,0,0,mShadowAttributes.ab_shadow_height)

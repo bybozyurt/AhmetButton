@@ -7,6 +7,9 @@ import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
+import android.view.View
 import androidx.annotation.RequiresApi
 import com.example.custombutton.attribute.DrawableAttributes
 import com.example.custombutton.attribute.RippleAttributes
@@ -61,10 +64,12 @@ class AhmetButton : BaseButton {
         defStyleAttr
     )
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun initButton() {
         initAttributes()
         setupButton()
     }
+
 
     private fun initAttributes() {
 
@@ -151,34 +156,45 @@ class AhmetButton : BaseButton {
         stateListAnimator = null // remove default elevation effect
         elevation = mElevation.toFloat()
 
-        if (mEnabled && mRippleAttributes.isUseRippleEffect) {
+        if (mEnabled && mRippleAttributes.isUseRippleEffect && mShadowAttributes.ab_shadow_enabled) {
+            Log.d("TAG","selam")
+
+            unPressedDrawable = DrawableFactory.createDrawable(
+                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color,
+                mShadowAttributes.ab_shadow_color, mShadowAttributes,
+                mDrawableNormal, mRippleAttributes)
+
             setButtonBackground(
                 DrawableFactory.getRippleDrawable(
-                    mDrawableNormal,
-                    mRippleAttributes
-                )
+                mDrawableNormal, mRippleAttributes, unPressedDrawable as LayerDrawable
             )
+            )
+
         } else {
+            unPressedDrawable = DrawableFactory.createDrawable(
+                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color,
+                Color.TRANSPARENT, mShadowAttributes, mDrawableNormal, mRippleAttributes)
             setButtonBackground(getButtonBackgroundStateList())
         }
 
-        if (mShadowAttributes.ab_shadow_enabled){
-            pressedDrawable = DrawableFactory.createDrawable(
-                mDrawableNormal.ab_radius, Color.TRANSPARENT, mDrawableNormal.ab_bg_color, mShadowAttributes)
-            unPressedDrawable = DrawableFactory.createDrawable(
-                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, mShadowAttributes.ab_shadow_color, mShadowAttributes)
 
-        }
-        else{
-            mShadowAttributes.ab_shadow_height = 0
-            pressedDrawable = DrawableFactory.createDrawable(
-                mDrawableNormal.ab_radius, mShadowAttributes.ab_shadow_color, Color.TRANSPARENT, mShadowAttributes)
-            unPressedDrawable = DrawableFactory.createDrawable(
-                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, Color.TRANSPARENT, mShadowAttributes)
+//        if (mShadowAttributes.ab_shadow_enabled){
+////            pressedDrawable = DrawableFactory.createDrawable(
+////                mDrawableNormal.ab_radius, Color.TRANSPARENT, mDrawableNormal.ab_bg_color, mShadowAttributes, mDrawableNormal, mRippleAttributes)
+//            unPressedDrawable = DrawableFactory.createDrawable(
+//                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, mShadowAttributes.ab_shadow_color, mShadowAttributes, mDrawableNormal, mRippleAttributes)
+//
+//        }
+//        else{
+//            mShadowAttributes.ab_shadow_height = 0
+////            pressedDrawable = DrawableFactory.createDrawable(
+////                mDrawableNormal.ab_radius, mShadowAttributes.ab_shadow_color, Color.TRANSPARENT, mShadowAttributes, mDrawableNormal, mRippleAttributes)
+//            unPressedDrawable = DrawableFactory.createDrawable(
+//                mDrawableNormal.ab_radius, mDrawableNormal.ab_bg_color, Color.TRANSPARENT, mShadowAttributes, mDrawableNormal, mRippleAttributes)
+//
+//        }
 
-        }
-
-        setButtonBackground(unPressedDrawable)
+        //setButtonBackground(unPressedDrawable)
 
     }
 
@@ -273,16 +289,19 @@ class AhmetButton : BaseButton {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun setBtnTextColorNormal(color: Int) {
         this.mTextColorNormal = color
         setupButton()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun setBtnBackgroundColorNormal(color: Int) {
         mDrawableNormal.ab_bg_color = color
         setupButton()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun setBtnRadius(radius: Int) {
         if (radius >= 0) {
             mDrawableNormal.ab_radius = DimensionUtil.dipToPx(radius.toFloat())
@@ -290,16 +309,19 @@ class AhmetButton : BaseButton {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun setBtnTextColorPressed(color: Int) {
         this.mTextColorPressed = color
         setupButton()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun setBtnBackgroundColorPressed(color: Int) {
         mDrawablePressed.ab_bg_color = color
         setupButton()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun setBtnRadiusPressed(radius: Int) {
         if (radius >= 0) {
             mDrawablePressed.ab_radius = DimensionUtil.dipToPx(radius.toFloat())
