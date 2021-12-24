@@ -19,13 +19,13 @@
         android:stateListAnimator="@null"
         android:text="B1"
         app:ab_backgroundColorNormal="#F40202"
-        app:ab_radius="15dp"
+        app:ab_radius="0dp"
         app:ab_rippleColor="@color/holo_purple"
         app:ab_rippleOpacity="150"
-        app:ab_shadowColor="@color/black"
-        app:ab_shadowColorBrightness="true"
+        app:ab_shadowColor="@color/colorPrimary"
+        app:ab_shadowColorBrightness="false"
         app:ab_shadowEnabled="true"
-        app:ab_shadowHeight="10dp"
+        app:ab_shadowHeight="15dp"
         app:ab_textColorNormal="@color/colorAccent"
         app:ab_useRippleEffect="true" />
 
@@ -35,6 +35,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="deneme"
+        android:visibility="gone"
         android:layout_marginTop="10dp"/>
 
 

@@ -14,16 +14,6 @@ object ColorUtil {
 
     }
 
-    fun darkenLightenColor(color: Int, factor: Float): Int {
-
-        return Color.argb(
-            Color.alpha(color),
-            Math.min(Math.round(Color.red(color) * factor), 255),
-            Math.min(Math.round(Color.green(color) * factor), 255),
-            Math.min(Math.round(Color.blue(color) * factor), 255))
-
-    }
-
     fun useOpacity(color: Int, opacity: Float): Int {
 
         return Color.argb(Math.min(Math.round(opacity * 255), 255),
