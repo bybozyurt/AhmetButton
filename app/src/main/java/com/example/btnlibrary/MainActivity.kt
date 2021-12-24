@@ -1,28 +1,50 @@
 package com.example.btnlibrary
 
-import android.graphics.Color
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
+import android.widget.Button
+import com.example.custombutton.AhmetButton
+import com.example.custombutton.attribute.AhmetButtonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.N)
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
+//        btnTest.setTextColor(Color.parseColor("#FFFFFF"))
+//        btnTest.setBtnBackgroundColorNormal(Color.parseColor("#000000"))
+//        btnTest.setRippleColor(Color.parseColor("#ff0099cc"))
 
-        //Toast.makeText(applicationContext, "he", Toast.LENGTH_SHORT).show()
+//        btnTest.setTextColor(resources.getColor(R.color.white))
+//       btnTest.setBtnBackgroundColorNormal(resources.getColor(R.color.colorAccent))
+//        btnTest.setRippleColor(resources.getColor(R.color.holo_blue_dark)
 
-        btnTest.setBtnBackgroundColorNormal(resources.getColor(R.color.holo_red_dark))
+//        val obj = AhmetButtonBuilder
+//            .Builder()
+//            .AbBgColor(resources.getColor(R.color.holo_blue_dark))
+//            .AbRadius(30)
+//            .build()
 
-        txt.text = btnTest.getBtnTextColorNormal().toString()
+
+
+
+
+
+
+
+
+
+
+
+
+        //txt.text = obj.ab_bg_color.toString()
+        //txt.text = obj.ab_radius.toString()
 
 
 
@@ -32,4 +54,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 }

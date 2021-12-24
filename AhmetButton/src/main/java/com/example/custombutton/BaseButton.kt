@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+
 import java.io.Console
 
 /**
@@ -15,11 +16,10 @@ import java.io.Console
  */
 abstract class BaseButton : AppCompatButton{
 
-
-
     protected var mContext: Context
     protected var mAttrs: AttributeSet?
     protected var mDefStyleAttr: Int? = 0
+
 
     constructor(context: Context) : super(context) {
         mContext = context
@@ -32,8 +32,6 @@ abstract class BaseButton : AppCompatButton{
         mContext = context
         mAttrs = attrs
         this.initButton()
-
-
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -41,7 +39,6 @@ abstract class BaseButton : AppCompatButton{
         mAttrs = attrs
         mDefStyleAttr = defStyleAttr
         this.initButton()
-
 
     }
 

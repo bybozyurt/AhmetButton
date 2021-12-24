@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,20 +15,19 @@
         android:id="@+id/btnTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="B1"
-        app:ab_textColorNormal="@color/black"
-        app:ab_textColorPressed="@color/white"
-        app:ab_useRippleEffect="true"
-        app:ab_rippleColor="@color/colorAccent"
-        app:ab_rippleOpacity="150"
-        app:ab_elevation="4dp"
-        app:ab_backgroundColorNormal="#5758FF"
-        app:ab_radius="30dp"
         android:enabled="true"
-        app:ab_shadowEnabled="true"
+        android:stateListAnimator="@null"
+        android:text="B1"
+        app:ab_backgroundColorNormal="#F40202"
+        app:ab_radius="15dp"
+        app:ab_rippleColor="@color/holo_purple"
+        app:ab_rippleOpacity="150"
         app:ab_shadowColor="@color/black"
-        app:ab_shadowHeight="5dp"
-        />
+        app:ab_shadowColorBrightness="true"
+        app:ab_shadowEnabled="true"
+        app:ab_shadowHeight="10dp"
+        app:ab_textColorNormal="@color/colorAccent"
+        app:ab_useRippleEffect="true" />
 
     <TextView
         android:id="@+id/txt"
@@ -36,58 +36,6 @@
         android:textColor="@color/black"
         android:text="deneme"
         android:layout_marginTop="10dp"/>
-
-
-<!--    <Space-->
-<!--        android:layout_width="16dp"-->
-<!--        android:layout_height="16dp" />-->
-
-<!--    <com.example.custombutton.AhmetButton-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="B2"-->
-<!--        app:ab_textColorNormal="@color/black"-->
-<!--        app:ab_textColorPressed="@color/colorAccent"-->
-<!--        app:ab_useRippleEffect="true"-->
-<!--        app:ab_rippleColor="#FFFFFF"-->
-<!--        app:ab_rippleOpacity="0.5"-->
-<!--        app:ab_elevation="10dp"-->
-<!--        app:ab_backgroundColorNormal="#E54C65"-->
-<!--        app:ab_borderRadiusNormal="20dp"-->
-
-
-<!--        />-->
-
-<!--    <Space-->
-<!--        android:layout_width="16dp"-->
-<!--        android:layout_height="16dp" />-->
-
-<!--    <com.example.custombutton.AhmetButton-->
-<!--        android:id="@+id/me"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="B3"-->
-<!--        app:ab_textColorNormal="@color/black"-->
-<!--        app:ab_backgroundColorNormal="@color/holo_red_dark"-->
-<!--        app:ab_useRippleEffect="true"-->
-<!--        android:elevation="5dp"-->
-<!--        app:ab_rippleColor="#FFFFFF"-->
-<!--        app:ab_borderRadiusNormal="10dp"/>-->
-
-<!--    <Space-->
-<!--        android:layout_width="16dp"-->
-<!--        android:layout_height="16dp" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/normalBtn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Normal"-->
-<!--        android:shadowColor="@color/holo_red_dark"-->
-<!--        android:shadowDy="3"-->
-<!--        android:shadowDx="3"-->
-<!--        android:shadowRadius="5"-->
-<!--        />-->
 
 
 </LinearLayout>
