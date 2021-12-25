@@ -12,16 +12,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn = findViewById<AhmetButton>(R.id.btnTest)
 
-        AhmetButtonBuilder(this)
-            .AbBgColor(resources.getColor(R.color.black))
-            .AbShadowColor(resources.getColor(R.color.colorAccent))
-            .AbRadius(15)
-            .AbRippleColor(resources.getColor(R.color.holo_blue_light))
-            .AbTxtColor(resources.getColor(R.color.holo_red_dark))
-            .AbShadowHeight(30)
-            .build(btn)
+        val btn : AhmetButton = findViewById(R.id.btnTest)
+
+//        AhmetButtonBuilder(this)
+//            .backgroundColor(resources.getColor(R.color.black))
+//            .shadowColor(resources.getColor(R.color.colorAccent))
+//            .radius(15)
+//            .rippleColor(resources.getColor(R.color.holo_blue_light))
+//            .textColor(resources.getColor(R.color.holo_red_dark))
+//            .shadowHeight(30)
+//            .build(btn)
+
+
+
 
     }
 

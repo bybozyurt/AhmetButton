@@ -15,7 +15,6 @@ object ColorUtil {
     }
 
     fun useOpacity(color: Int, opacity: Float): Int {
-
         return Color.argb(Math.min(Math.round(opacity * 255), 255),
             Math.min(Math.round(Color.red(color).toFloat()), 255),
             Math.min(Math.round(Color.green(color).toFloat()), 255),
@@ -24,7 +23,7 @@ object ColorUtil {
     }
 
     fun isDarkColor(color: Int): Boolean {
-
+        
         val r = Color.red(color) / 255f
         val g = Color.green(color) / 255f
         val b = Color.blue(color) / 255f
@@ -32,7 +31,6 @@ object ColorUtil {
         val luma = r * 0.299f + g * 0.587f + b * 0.114f
 
         return luma < 0.5
-
     }
 
     fun getTextColorFromBackgroundColor(color: Int): Int {

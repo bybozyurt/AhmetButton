@@ -5,7 +5,7 @@ package com.example.custombutton.attribute
  */
 class RippleAttributes {
 
-    var isUseRippleEffect: Boolean = false
-    var rippleOpacity: Float = 0.toFloat()
+    var mIsRippleEffect: Boolean = false
+    var mRippleOpacity: Float = 0.toFloat()
 
 }

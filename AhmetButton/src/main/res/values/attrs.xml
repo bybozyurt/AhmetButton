@@ -7,11 +7,9 @@
         <attr name="android:text" />
         <attr name="android:elevation" />
 
-
         <attr name="ab_textColorNormal" format="color"/>
         <attr name="ab_backgroundColorNormal" format="color"/>
         <attr name="ab_radius" format="dimension"/>
-
 
         <attr name="ab_enabled" format="boolean"/>
         <attr name="ab_useRippleEffect" format="boolean"/>

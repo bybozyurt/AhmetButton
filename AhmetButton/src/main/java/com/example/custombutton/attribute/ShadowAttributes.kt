@@ -5,6 +5,6 @@ package com.example.custombutton.attribute
  */
 class ShadowAttributes {
 
-    var ab_shadow_enabled : Boolean = true
+    var mShadowEnabled : Boolean = true
 
 }
