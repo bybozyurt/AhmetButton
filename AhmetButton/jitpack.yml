@@ -1,0 +1,4 @@
+jdk:
+  -openjdkll
+before_install:
+  - ./scripts/prepareJitpackEnvironment.sh
