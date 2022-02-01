@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.util.AttributeSet
-import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
 import com.example.custombutton.attribute.RippleAttributes
 import com.example.custombutton.attribute.ShadowAttributes
@@ -29,21 +28,20 @@ class AhmetButton : AppCompatButton {
         val DEFAULT_USE_RIPPLE_EFFECT = false
         val DEFAULT_RIPPLE_COLOR = -0x1000000
         val DEFAULT_RIPPLE_OPACITY = 0.26f
-        var DEFAULT_BACKGROUND_COLOR = -0x333334
-        val DEFAULT_RADIUS = 12
+        var DEFAULT_BACKGROUND_COLOR = -0x237213
+        val DEFAULT_RADIUS = 16
         val DEFAULT_ELEVATION = 0
         val DEFAULT_BUTTON_ENABLED = true
         val DEFAULT_BUTTON_SHADOW_ENABLED = true
         val DEFAULT_BUTTON_SHADOW_COLOR = 0
-        val DEFAULT_BUTTON_SHADOW_HEIGHT = 3
+        val DEFAULT_BUTTON_SHADOW_HEIGHT = 16
+        val DEFAULT_BUTTON_SHADOW_BRIGHTNESS = true
         val DEFAULT_PADDING_TOP = 35
         val DEFAULT_PADDING_BOTTOM = 35
     }
 
     private var mEnabled: Boolean = true
     private var ShadowColorBrightness: Boolean = false
-    var mDx: Int = 35
-    var Dy: Int = 35
     private var mElevation: Int = DEFAULT_ELEVATION
 
     private var mTextColorNormal: Int =
@@ -81,6 +79,7 @@ class AhmetButton : AppCompatButton {
         ahmetButton.mShadowHeight = ahmetButtonBuilder.mShadowHeight
         ahmetButton.mRippleColor = ahmetButtonBuilder.mRippleColor
         ahmetButton.mTextColorNormal = ahmetButtonBuilder.mTextColor
+        ahmetButton.mRippleAttributes.mRippleOpacity = ahmetButtonBuilder.mRippleOpacity
         ahmetButton.setupButton()
 
     }
@@ -109,7 +108,10 @@ class AhmetButton : AppCompatButton {
         mEnabled = typedArray.getBoolean(R.styleable.AhmetButton_android_enabled, mEnabled)
 
         ShadowColorBrightness =
-            typedArray.getBoolean(R.styleable.AhmetButton_ab_shadowColorBrightness, false)
+            typedArray.getBoolean(
+                R.styleable.AhmetButton_ab_shadowColorBrightness,
+                DEFAULT_BUTTON_SHADOW_BRIGHTNESS
+            )
 
 
         mRippleAttributes.mIsRippleEffect = typedArray.getBoolean(
@@ -139,9 +141,7 @@ class AhmetButton : AppCompatButton {
     }
 
     private fun setButtonBackground(drawable: Drawable) {
-
         this.background = drawable
-
     }
 
 
@@ -158,13 +158,12 @@ class AhmetButton : AppCompatButton {
         val hsv = FloatArray(3)
         Color.colorToHSV(mBackgroundColor, hsv)
         hsv[2] *= 0.8f
-        
+
         if (ShadowColorBrightness) {
             mShadowColor = Color.HSVToColor(alpha, hsv)
         }
 
         if (mEnabled && mRippleAttributes.mIsRippleEffect || mShadowAttributes.mShadowEnabled) {
-            Log.d("TAG", "if enabled")
 
             mDrawable = createDrawable(
                 mRadius, mBackgroundColor,
@@ -179,7 +178,6 @@ class AhmetButton : AppCompatButton {
 
 
         } else {
-            Log.d("TAG", "else enabled")
             mDrawable = createDrawable(
                 mRadius, mBackgroundColor,
                 Color.TRANSPARENT
@@ -320,59 +318,42 @@ class AhmetButton : AppCompatButton {
     }
 
 
+    fun setBtnBackgroundColor(color: Int): AhmetButton {
+        mBackgroundColor = color
+        setupButton()
+        return this
+    }
 
-//    fun setBtnBackgroundColor(color : Int) : AhmetButton{
-//        mBackgroundColor = color
-//        setupButton()
-//        return this
-//    }
 
+    fun setBtnShadowColor(color: Int): AhmetButton {
+        mShadowColor = color
+        setupButton()
+        return this
+    }
 
-//    fun setBtnShadowColor(color: Int) : AhmetButton{
-//        mShadowAttributes.ab_shadow_color = color
-//        setupButton()
-//        return this
-//    }
-//
-//
-//    fun setBtnShadowHeight(height : Int){
-//        mShadowAttributes.ab_shadow_height = height
-//        setupButton()
-//    }
-//
-//
-//    fun setBtnShadowEnabled(enabled : Boolean){
-//        mShadowAttributes.ab_shadow_enabled = enabled
-//        setupButton()
-//    }
-//
-//
-//    fun setBtnRadius(radius: Int) : AhmetButton{
-//        if (radius >= 0) {
-//            mAhmetButtonBuilder.ab_radius = radius
-//            setupButton()
-//        }
-//        return this
-//
-//    }
-//
-//
-//    fun setRippleColor(color: Int){
-//        mRippleAttributes.rippleColor = color
-//        setupButton()
-//    }
-//
-//
-//    fun setRippleOpacity(opacity : Int){
-//        mRippleAttributes.rippleOpacity = opacity.toFloat()
-//        setupButton()
-//    }
-//
-//
-//    fun setRippleEffect(enabled: Boolean){
-//        mRippleAttributes.isUseRippleEffect = enabled
-//        setupButton()
-//    }
+    fun setBtnShadowHeight(height: Int) {
+        mShadowHeight = height
+        setupButton()
+    }
+
+    fun setBtnRadius(radius: Int): AhmetButton {
+        if (radius >= 0) {
+            mRadius = radius
+            setupButton()
+        }
+        return this
+
+    }
+
+    fun setRippleColor(color: Int) {
+        mRippleColor = color
+        setupButton()
+    }
+
+    fun setRippleOpacity(rippleOpacity: Int) {
+        mRippleAttributes.mRippleOpacity = rippleOpacity.toFloat()
+        setupButton()
+    }
 
 
 }

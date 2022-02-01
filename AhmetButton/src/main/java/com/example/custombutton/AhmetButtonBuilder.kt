@@ -25,6 +25,8 @@ class AhmetButtonBuilder(
         private set
     var mTextColor : Int = context.resources.getColor(R.color.black)
 
+    var mRippleOpacity: Float = 0.26f
+
 
     fun backgroundColor(backgroundColor: Int) = apply { this.mBackgroundColor = backgroundColor }
 
@@ -36,7 +38,10 @@ class AhmetButtonBuilder(
 
     fun rippleColor(rippleColor: Int) = apply { this.mRippleColor = rippleColor }
 
+    fun rippleOpacity(rippleOpacity: Float) = apply { this.mRippleOpacity = rippleOpacity }
+
     fun textColor(textColor: Int) = apply { this.mTextColor = textColor }
+
 
     fun build(ahmetButton: AhmetButton) = AhmetButton(context, this, ahmetButton)
 
