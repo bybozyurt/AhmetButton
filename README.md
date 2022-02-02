@@ -118,7 +118,13 @@ btn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
 ```
 
 
-<img src="https://user-images.githubusercontent.com/51344498/152018302-4073df84-38b3-4727-a4c5-ef345af8ed52.gif" width="400" height="800" />
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51344498/152018302-4073df84-38b3-4727-a4c5-ef345af8ed52.gif" width="400" height="800" />
+</p>
+
+
+
+
 
 ```
 Copyright 2022 Ahmet BOZYURT
